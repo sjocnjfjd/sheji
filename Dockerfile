@@ -9,4 +9,5 @@ COPY . .
 
 ENV PORT=8000
 
-CMD ["gunicorn", "--worker-class", "eventlet", "--workers", "1", "--bind", "0.0.0.0:8000", "app:app"]
+# 修改启动命令
+CMD gunicorn --worker-class eventlet --workers 1 --bind 0.0.0.0:$PORT --timeout 120 app:app
